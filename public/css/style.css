@@ -7,8 +7,8 @@
   --line: #262a31;
   --text: #ededea;
   --text-dim: #8a8f98;
-  --magma: #ff5a2d;
-  --magma-dim: #b8431f;
+  --magma: #a855f7;
+  --magma-dim: #7c3aed;
   --spark: #37e6c4;
   --danger: #ff5c6c;
   --radius: 10px;
@@ -62,7 +62,7 @@ a { color: inherit; text-decoration: none; }
 }
 .btn:active { transform: scale(0.98); }
 .btn-primary { background: var(--magma); color: #0b0d10; }
-.btn-primary:hover { background: #ff7a4f; }
+.btn-primary:hover { background: #c084fc; }
 .btn-ghost { background: transparent; color: var(--text); border-color: var(--line); }
 .btn-ghost:hover { border-color: #3a3f47; }
 .btn-block { width: 100%; }
@@ -88,7 +88,7 @@ a { color: inherit; text-decoration: none; }
 /* --- Terminal boot signature element --- */
 .terminal {
   background: #0e1013; border: 1px solid var(--line); border-radius: 12px;
-  overflow: hidden; box-shadow: 0 30px 80px -30px rgba(255,90,45,0.25);
+  overflow: hidden; box-shadow: 0 30px 80px -30px rgba(168,85,247,0.25);
 }
 .terminal-bar {
   display: flex; align-items: center; gap: 8px; padding: 10px 14px;
@@ -119,7 +119,7 @@ section { padding: 70px 0; }
   background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius);
   padding: 24px;
 }
-.feature .icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,90,45,0.12); color: var(--magma); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; font-family: 'JetBrains Mono'; font-weight: 600; }
+.feature .icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(168,85,247,0.12); color: var(--magma); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; font-weight: 700; font-size: 0.8rem; }
 .feature h3 { font-size: 1.02rem; margin-bottom: 6px; }
 .feature p { color: var(--text-dim); font-size: 0.9rem; margin: 0; }
 
