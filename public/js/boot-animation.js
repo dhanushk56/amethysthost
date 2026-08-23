@@ -1,56 +1,53 @@
-// Signature hero element: a fake but realistic server-boot log that types
-// itself out, then loops. Purely decorative — no real server involved.
-const BOOT_LINES = [
-  { text: '$ forgectl deploy --plan free --region na-east', cls: '' },
-  { text: '  allocating 2048MB / 10GB NVMe...', cls: '' },
-  { text: '  binding allocation 51.81.x.x:25565', cls: '' },
-  { text: '  pulling image: yolks/java_21', cls: '' },
-  { text: '  ✓ container started', cls: 'ok' },
-  { text: '[Server] Preparing level "world"', cls: '' },
-  { text: '[Server] Done (2.91s)! For help, type "help"', cls: 'ok' },
-  { text: '[ForgeHost] server is READY — 14ms to Blaze TX', cls: 'tag' },
-];
-
-function typeLine(container, text, cls, cb) {
-  const el = document.createElement('div');
-  el.className = `line ${cls}`;
-  container.appendChild(el);
-  let i = 0;
-  const speed = 12;
-  const tick = () => {
-    el.textContent = text.slice(0, i);
-    i++;
-    if (i <= text.length) {
-      setTimeout(tick, speed);
-    } else {
-      cb();
-    }
-  };
-  tick();
-}
-
+// Terminal boot animation – smoother looping with fade out/in
 function runBoot(container) {
-  container.innerHTML = '';
+  const BOOT_LINES = [
+    '[  OK  ] Started System Logger.',
+    '[  OK  ] Reached target Multi-User System.',
+    '[  OK  ] Starting AmethystHost node agent...',
+    '[  OK  ] Agent connected to panel.',
+    '[  OK  ] Allocating server resources...',
+    '> Server ready in 4.2s',
+    '> IP: 198.51.100.42:25565',
+    '> Type: Java Edition 1.21.1',
+  ];
+
   let idx = 0;
+  container.innerHTML = ''; // clear previous content
+
   const next = () => {
     if (idx >= BOOT_LINES.length) {
+      // Append blinking cursor
       const cursor = document.createElement('span');
       cursor.className = 'cursor';
       container.appendChild(cursor);
-      setTimeout(() => runBoot(container), 3200);
+
+      // Wait, then restart with a smooth fade
+      setTimeout(() => {
+        container.style.transition = 'opacity 0.5s ease';
+        container.style.opacity = '0';
+        setTimeout(() => {
+          // Reset and restart
+          runBoot(container);
+          container.style.opacity = '1';
+        }, 500);
+      }, 3200);
       return;
     }
-    const { text, cls } = BOOT_LINES[idx++];
-    typeLine(container, text, cls, next);
+
+    const line = document.createElement('div');
+    line.textContent = BOOT_LINES[idx];
+    container.appendChild(line);
+    idx++;
+    setTimeout(next, 300 + Math.random() * 200); // variable delay for realism
   };
+
   next();
 }
 
-const bootLog = document.getElementById('bootLog');
-if (bootLog) {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    bootLog.innerHTML = BOOT_LINES.map((l) => `<div class="line ${l.cls}">${l.text}</div>`).join('');
-  } else {
-    runBoot(bootLog);
+// Start the boot sequence when the DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('boot-container');
+  if (container) {
+    runBoot(container);
   }
-}
+});
