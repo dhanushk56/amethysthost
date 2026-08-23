@@ -1,24 +1,21 @@
 {
-  "name": "netherhost-clone",
+  "name": "amethysthost",
   "version": "1.0.0",
-  "description": "Minecraft server hosting platform: landing page, accounts, Stripe billing, and real Pterodactyl provisioning.",
-  "main": "server/index.js",
+  "description": "Premium Minecraft hosting",
+  "main": "server.js",
+  "type": "commonjs",
   "scripts": {
-    "start": "node server/index.js",
-    "dev": "nodemon server/index.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "dependencies": {
-    "axios": "^1.7.7",
     "bcryptjs": "^2.4.3",
-    "better-sqlite3": "^11.3.0",
-    "cookie-parser": "^1.4.6",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "jsonwebtoken": "^9.0.2",
-    "stripe": "^16.12.0"
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb": "^5.0.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.4"
+    "nodemon": "^2.0.20"
   }
 }
