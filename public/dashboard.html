@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard — ForgeHost</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="/" class="brand"><span class="dot"></span> ForgeHost</a>
+    <div></div>
+    <div class="nav-cta">
+      <span id="userName" class="mono" style="color:var(--text-dim); font-size:0.85rem;"></span>
+      <button class="btn btn-ghost" id="logoutBtn">Log out</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="dash-header">
+    <div>
+      <h1 style="font-size:1.6rem;">Your servers</h1>
+    </div>
+    <div style="display:flex; gap:12px;">
+      <a href="/pricing.html" class="btn btn-ghost">Add a server</a>
+      <button class="btn btn-primary" id="deployFreeBtn">Deploy Free Server</button>
+    </div>
+  </div>
+
+  <div id="banner"></div>
+  <div style="padding:32px 0;" id="serverList">
+    <p class="mono" style="color:var(--text-dim)">Loading your servers…</p>
+  </div>
+</div>
+
+<script src="js/dashboard.js"></script>
+</body>
+</html>
